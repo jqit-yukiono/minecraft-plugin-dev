@@ -1,0 +1,34 @@
+# ローカル開発用のテストサーバ。本番(mc01)とは完全に分離
+# (別ポート・別ボリューム・オフラインモード)。
+#
+# 使い方:
+#   cd test-server && docker compose up -d
+#   ./gradlew deployToTestServer  (リポジトリルートで。jar を plugins/ に配置)
+#   docker compose restart test-server  (プラグイン再読込)
+#
+# IntelliJ からのリモートデバッグ: Run > Edit Configurations > Remote JVM Debug で
+# localhost:5005 にアタッチする(JVM_OPTS で JDWP を有効化済み、suspend=n なので
+# サーバー起動はデバッガ未接続でも進む)。
+services:
+  test-server:
+    image: itzg/minecraft-server:latest
+    container_name: mc-plugin-dev-test-server
+    ports:
+      - "25566:25565"
+      - "5005:5005"
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "26.1.2"
+      MEMORY: "2G"
+      # 自分だけで繋ぐローカル専用サーバなので、Mojang認証は不要にする。
+      ONLINE_MODE: "FALSE"
+      # KotlinPlugins(プラグインがKotlin stdlibを使うための実行時依存)を
+      # 本番と同じ経路(Modrinth自動DL)で入れる。
+      MODRINTH_PROJECTS: "kotlinplugins"
+      JVM_OPTS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+    volumes:
+      - ./data:/data
+      - ./plugins:/data/plugins
+    stdin_open: true
+    tty: true

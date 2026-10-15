@@ -3,10 +3,8 @@
 build/
 .DS_Store
 
-# ローカルテストサーバのワールド/ログ等(プラグインjarだけ追跡したいので中身は無視)
+# ローカルテストサーバ: データ全体(ワールド/ログ/eula等)は無視。
+# plugins/ は jar(ビルド生成物)だけ無視し、.gitkeep で空ディレクトリを維持する。
+test-server/data/
 test-server/plugins/*
 !test-server/plugins/.gitkeep
-test-server/world*/
-test-server/logs/
-test-server/*.jar
-test-server/eula.txt

@@ -29,11 +29,23 @@ JDKの実パスが Gradle の toolchain 自動検出に乗らない場合(Homebr
 ./gradlew deployToTestServer # build/libs/ の jar を test-server/plugins/ へコピー
 ```
 
-## ローカルテストサーバ(Docker、未構築)
+## ローカルテストサーバ(Docker)
 
-`test-server/` にデータを永続化する想定。本番(mc01)とは別ポート・別ボリュームで、
-`itzg/minecraft-server`(TYPE=PAPER, VERSION=26.1.2)を使う。IntelliJ からの
-リモートデバッグは `JVM_OPTS` に `-agentlib:jdwp=...` を渡して有効化する。
+```bash
+./gradlew deployToTestServer     # build/libs/ の jar を test-server/plugins/ へ配置
+cd test-server && docker compose up -d
+docker compose logs -f           # 起動確認(KotlinPlugins → ExamplePlugin の順でロードされる)
+```
+
+- 接続先: `localhost:25566`(本番mc01の25565とは別ポート)。`ONLINE_MODE=FALSE`なので
+  Mojang認証不要、どのユーザー名でもそのまま接続できる
+- `KotlinPlugins`は本番と同じ経路(`MODRINTH_PROJECTS`)で自動DLされる
+- プラグイン更新後は `./gradlew deployToTestServer && cd test-server && docker compose restart`
+- IntelliJ からのリモートデバッグ: Run > Edit Configurations > Remote JVM Debug で
+  `localhost:5005` にアタッチ(`JVM_OPTS`でJDWP有効化済み、`suspend=n`なので
+  デバッガ未接続でも起動は進む)
+- データ(`test-server/data/`)はgitignore対象。クリーンな状態からやり直す場合は
+  `docker compose down && rm -rf data` でリセット
 
 ## paper-api のバージョン表記について
 
