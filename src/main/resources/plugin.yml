@@ -1,0 +1,9 @@
+name: ExamplePlugin
+version: '${version}'
+main: ${plugin_main}
+api-version: '1.21'
+authors: [ yukiono ]
+# KotlinPlugins (https://modrinth.com/plugin/kotlinplugins) が Kotlin stdlib を
+# 提供する。先にロードさせるため明示的に依存させる(NightVision は明示していないが
+# ロード順が保証されないため安全策として入れる)。
+depend: [ KotlinPlugins ]

@@ -1,0 +1,12 @@
+.gradle/
+.idea/
+build/
+.DS_Store
+
+# ローカルテストサーバのワールド/ログ等(プラグインjarだけ追跡したいので中身は無視)
+test-server/plugins/*
+!test-server/plugins/.gitkeep
+test-server/world*/
+test-server/logs/
+test-server/*.jar
+test-server/eula.txt
