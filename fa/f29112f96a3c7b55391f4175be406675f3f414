@@ -1,0 +1,41 @@
+settings.gradle.kts
+  s_abc83cecb39ccd::t_095e631b904466 1
+src/main/kotlin/info/sk4869/minecraft/ExamplePlugin.kt
+  s_abc83cecb39ccd::t_92c6213bd33d6c 1-17
+README.md
+  s_abc83cecb39ccd::t_fc6208797f10ce 1-43
+build.gradle.kts
+  s_abc83cecb39ccd::t_ff28aa2e8895cd 1-45
+gradle.properties
+  s_abc83cecb39ccd::t_08d02426b50378 3-6
+  s_abc83cecb39ccd::t_54f661c936bfea 10-13
+  s_abc83cecb39ccd::t_2b6973fea793c4 1-2,7-9
+src/main/resources/plugin.yml
+  s_abc83cecb39ccd::t_837a4b8fd44706 1-9
+.gitignore
+  s_abc83cecb39ccd::t_52cd85058288dd 1-12
+.java-version
+  s_abc83cecb39ccd::t_55b5fdcca01c09 1
+gradle/wrapper/gradle-wrapper.properties
+  s_abc83cecb39ccd::t_bece930657843a 1-9
+gradlew
+  s_abc83cecb39ccd::t_8a81213a3efca2 1-248
+gradlew.bat
+  s_abc83cecb39ccd::t_d579c8c48f6636 1-112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "faf29112f96a3c7b55391f4175be406675f3f414",
+  "prompts": {},
+  "sessions": {
+    "s_abc83cecb39ccd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ecb265d-e089-44ab-bfcc-b78ed2a9a24f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "jqit-yukiono <jqit.yuki.ono@gmail.com>"
+    }
+  }
+}
