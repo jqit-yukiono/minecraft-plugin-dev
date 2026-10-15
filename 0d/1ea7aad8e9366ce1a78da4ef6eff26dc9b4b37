@@ -1,0 +1,21 @@
+README.md
+  s_abc83cecb39ccd::t_bb72b1d1cc3d5c 27-28,30-36,42-44
+Makefile
+  s_abc83cecb39ccd::t_204b9c99b1661a 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0d1ea7aad8e9366ce1a78da4ef6eff26dc9b4b37",
+  "prompts": {},
+  "sessions": {
+    "s_abc83cecb39ccd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ecb265d-e089-44ab-bfcc-b78ed2a9a24f",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "jqit-yukiono <jqit.yuki.ono@gmail.com>"
+    }
+  }
+}
