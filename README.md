@@ -24,17 +24,24 @@ JDKの実パスが Gradle の toolchain 自動検出に乗らない場合(Homebr
 
 ## よく使うコマンド
 
+`make help` で一覧表示。
+
 ```bash
-./gradlew build              # ビルド(build/libs/ にjarができる)
-./gradlew deployToTestServer # build/libs/ の jar を test-server/plugins/ へコピー
+make build    # ビルド(build/libs/ にjarができる)
+make start    # テストサーバを起動(バックグラウンド)
+make stop     # テストサーバを停止(データは保持)
+make restart  # テストサーバを再起動(プラグイン再読込)
+make deploy   # ビルド→jarをplugins/へ配置→再起動
+make logs     # テストサーバのログを追跡
+make clean    # テストサーバを削除してデータをリセット
 ```
 
 ## ローカルテストサーバ(Docker)
 
 ```bash
-./gradlew deployToTestServer     # build/libs/ の jar を test-server/plugins/ へ配置
-cd test-server && docker compose up -d
-docker compose logs -f           # 起動確認(KotlinPlugins → ExamplePlugin の順でロードされる)
+make start   # テストサーバ起動
+make deploy  # ビルド→配置→再起動(コード変更後はこれだけでOK)
+make logs    # 起動確認(KotlinPlugins → ExamplePlugin の順でロードされる)
 ```
 
 - 接続先: `localhost:25566`(本番mc01の25565とは別ポート)。`ONLINE_MODE=FALSE`なので
